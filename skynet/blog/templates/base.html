@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+</head>
+<body>
+<header>
+    {% block header %}
+    {% endblock %}
+</header>
+{% block banner %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/css/base/banner.css' %}" type="text/css">
+    <div class="banner">
+        <div class="blog_name">
+            <a href="#">SkyNet</a>
+        </div>
+        <div class="edit_blog" >
+            <a href="{% url 'blog:edit'%}">写文章</a>
+        </div>
+
+        <div class="container">
+            <a href="">发现</a>
+            <a href="">关注</a>
+            <a href="">消息</a>
+            <input class="search" type="text" value="" placeholder="搜索">
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+{% endblock %}
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
+
+</body>
+</html>

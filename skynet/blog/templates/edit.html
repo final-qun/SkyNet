@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        写文章
+    </title>
+</head>
+<body>
+{% load static %}
+<link rel="stylesheet" href="{% static 'blog/css/edit.css' %}" type="text/css">
+<script type="text/javascript" src="{% static 'blog/js/edit.js' %}"></script>
+<script type="text/javascript" src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
+<div class="left">
+
+    <div class="left_main">
+        <div class="new_post">
+            <a class="new_post_link" href="javascript:;" onclick="clicks()">新建文章</a>
+        </div>
+        <ul id="one_post" class="one_post">
+            {% for post in posts %}
+                <li>
+                    <a href="javascript:;" onclick="show_post({{ post.id }})">{{ post.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="post_main">
+    <form>
+        <input id="main_title" class="post_main_title" type="text" value="{{ title }}">
+        <div class="toolbar">
+            <ul class="post_main_edit">
+                <li>
+                    <a href="">添加图片</a>
+                </li>
+                <li>
+                    <a href="javascript:;" onclick="save_post()">保存</a>
+                </li>
+                <li class="post_edit_right">
+                    <a href="">发布</a>
+                </li>
+            </ul>
+        </div>
+        <textarea id="main_body" class="post_main_texteara">{{ body }}</textarea>
+    </form>
+</div>
+</body>
+</html>

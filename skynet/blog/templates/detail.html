@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+{% block content %}
+    {% load custom_markdown %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/detail.css' %}"/>
+
+    <div class="content">
+        <span class="title">{{ post.title }} </span>
+        <div>
+            <span>喜欢:</span>{{ post.likes }}
+            <span>点赞:</span>{{ post.praises }}
+            <span>浏览量:</span>{{ post.views }}
+        </div>
+        <p class="body">{{ post.body |custom_markdown }}</p>
+    </div>
+{% endblock %}

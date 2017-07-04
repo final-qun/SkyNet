@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.left {
+    width: 30%;
+    float: left;
+    height: 100%;
+}
+
+.left_main {
+    border-right: 1px solid #999;
+    height: 100%;
+}
+
+.new_post {
+    height: 62px;
+    border-bottom: 1px solid #999;
+}
+
+.new_post_link {
+    font-size: 20px;
+    display: block;
+    padding-left: 50px;
+    padding-top: 15px;
+}
+
+.one_post {
+    background: #fff;
+}
+
+.one_post li {
+    height: 75px;
+    border-bottom: 1px solid #999;
+}
+
+.one_post a {
+    display: block;
+    font-size: 25px;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+.post_main {
+    float: left;
+    width: 70%;
+    height: 100%;
+}
+
+.post_main_title {
+    width: 99%;
+    height: 50px;
+    font-size: 30px;
+    padding-top: 10px;
+    padding-left: 20px;
+    border: none;
+}
+
+.toolbar {
+    width: 100%;
+    height: 40px;
+    background: #999;
+}
+
+.post_main_edit li {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    padding-left: 15px;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.post_edit_right {
+    float: right;
+    padding-right: 15px;
+}
+
+.post_main_texteara {
+    width: 95%;
+    height: 540px;
+    font-size: 20px;
+    resize: none;
+    padding: 10px 20px;
+    overflow: auto;
+    border: none;
+}

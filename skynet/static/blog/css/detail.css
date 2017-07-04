@@ -1,0 +1,13 @@
+.content {
+    padding-bottom: 15px;
+    width: 80%;
+    margin: 0 auto;
+}
+.title {
+    font-size: 25px;
+    color: #000;
+}
+
+.body {
+    color: #777;
+}

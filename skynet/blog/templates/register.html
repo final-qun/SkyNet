@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    SkyNet注册
+{% endblock %}
+{% block content %}
+    <h2>用户注册</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ rf.as_p }}
+        <input type="submit" value="提交">
+    </form>
+{% endblock %}

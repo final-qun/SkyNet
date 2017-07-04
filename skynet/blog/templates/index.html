@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+    文章目录
+{% endblock %}
+{% block content %}
+    {% load custom_markdown %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/css/index.css' %}" type="text/css">
+
+    <body>
+    <ul class="note-list">
+        {% for post in posts %}
+            <li>
+                <div class="content">
+                    <a href="" class="title">{{ post.title }}</a> <span class="time">{{ post.create_time }}</span>
+
+                    <p class="abstract">{{ post.body | custom_markdown | truncatechars_html:80 }}</p>
+                    <a href="{% url 'blog:detail' post.pk %}">阅读全文</a>
+                </div>
+
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
