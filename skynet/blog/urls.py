@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^edit/',EditPostView.as_view(), name='edit'),
     url(r'^add_new_post',csrf_exempt(add_new_post),name='add_new_post'),
     url(r'^show_post/(?P<post_id>\d+)',csrf_exempt(show_post),name='show_post'),
+    url(r'^save_post/(?P<post_id>\d+)',csrf_exempt(save_post),name='save_post')
 ]

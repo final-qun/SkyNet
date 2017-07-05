@@ -95,6 +95,18 @@ def add_new_post(request):
 @csrf_exempt
 def show_post(request, post_id):
     post = BlogPost.objects.get(pk=post_id)
-    post_json = {'post':post}
     return HttpResponse(simplejson.dumps({'body': post.body,
                                           'title': post.title}, ensure_ascii=False))
+
+
+@csrf_exempt
+def save_post(request, post_id):
+    print('savePost')
+    post = BlogPost.objects.get(pk=post_id)
+    print(post.title,post.body)
+    if request.is_ajax():
+        post.title = request.POST.get('title')
+        post.body = request.POST.get('body')
+        print(post.title, post.body)
+        post.save()
+    return HttpResponse()

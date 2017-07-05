@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="{% static 'blog/css/edit.css' %}" type="text/css">
 <script type="text/javascript" src="{% static 'blog/js/edit.js' %}"></script>
 <script type="text/javascript" src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
+<div class="main">
 <div class="left">
 
     <div class="left_main">
@@ -19,7 +20,7 @@
         </div>
         <ul id="one_post" class="one_post">
             {% for post in posts %}
-                <li>
+                <li data-id="{{ post.id }}" data-s="1">
                     <a href="javascript:;" onclick="show_post({{ post.id }})">{{ post.title }}</a>
                 </li>
             {% endfor %}
@@ -44,6 +45,7 @@
         </div>
         <textarea id="main_body" class="post_main_texteara">{{ body }}</textarea>
     </form>
+</div>
 </div>
 </body>
 </html>
