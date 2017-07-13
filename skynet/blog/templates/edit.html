@@ -1,51 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>
-        写文章
-    </title>
-</head>
-<body>
-{% load static %}
-<link rel="stylesheet" href="{% static 'blog/css/edit.css' %}" type="text/css">
-<script type="text/javascript" src="{% static 'blog/js/edit.js' %}"></script>
-<script type="text/javascript" src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
-<div class="main">
-<div class="left">
-
-    <div class="left_main">
-        <div class="new_post">
-            <a class="new_post_link" href="javascript:;" onclick="clicks()">新建文章</a>
+{% extends 'base.html' %}
+{% block title %}
+    文章目录
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/css/edit.css' %}" type="text/css">
+    <script type="text/javascript" src="{% static 'blog/js/edit.js' %}"></script>
+    <div class="ui center aligned grid">
+        <div class="column">
+            <div class="ui menu">
+                <a class="item">标题</a>
+                <a class="item">内容</a>
+                <a class="item">工具</a>
+                <a class="right item">发布</a>
+            </div>
+            <form class="ui large form">
+                <div class="ui stacked segment">
+                    <div class="field">
+                        <div class="ui menu">
+                            <div class="ui dropdown item">
+                                你好
+                                <i class="blod icon"></i>
+                                <div class="menu">
+                                    <div class="item">
+                                        <i class="italic icon"></i>
+                                    </div>
+                                    <div class="item">
+                                        <i class="strikethrough icon"></i>
+                                    </div>
+                                    <div class="item">
+                                        <i class="quote left icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui input">
+                            <input type="text" name="title">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui input">
+                            <textarea name="body"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui error message"></div>
+            </form>
         </div>
-        <ul id="one_post" class="one_post">
-            {% for post in posts %}
-                <li data-id="{{ post.id }}" data-s="1">
-                    <a href="javascript:;" onclick="show_post({{ post.id }})">{{ post.title }}</a>
-                </li>
-            {% endfor %}
-        </ul>
     </div>
-</div>
-<div class="post_main">
-    <form>
-        <input id="main_title" class="post_main_title" type="text" value="{{ title }}">
-        <div class="toolbar">
-            <ul class="post_main_edit">
-                <li>
-                    <a href="">添加图片</a>
-                </li>
-                <li>
-                    <a href="javascript:;" onclick="save_post()">保存</a>
-                </li>
-                <li class="post_edit_right">
-                    <a href="">发布</a>
-                </li>
-            </ul>
-        </div>
-        <textarea id="main_body" class="post_main_texteara">{{ body }}</textarea>
-    </form>
-</div>
-</div>
-</body>
-</html>
+{% endblock %}

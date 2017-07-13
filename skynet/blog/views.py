@@ -12,26 +12,20 @@ from blog.froms import *
 
 
 class IndexView(ListView):
-    model = BlogPost
+    model = Blog
     template_name = 'index.html'
     context_object_name = 'posts'
 
-    def get_queryset(self):
-        posts = BlogPost.objects.all()
-        for post in posts:
-            post.body = markdown(post.body)
-        return posts
-
 
 class PostDetailView(DetailView):
-    model = BlogPost
+    model = Blog
     template_name = 'detail.html'
     pk_url_kwarg = 'post_id'
     context_object_name = 'post'
 
 
 class EditPostView(ListView):
-    model = BlogPost
+    model = Blog
     template_name = 'edit.html'
     context_object_name = 'posts'
 
@@ -84,7 +78,7 @@ def register(request):
 @csrf_exempt
 def add_new_post(request):
     print('add new post')
-    post = BlogPost.objects.create(title='无标题文章',
+    post = Blog.objects.create(title='无标题文章',
                                    body='',
                                    status='1',
                                    category=None)
@@ -94,7 +88,7 @@ def add_new_post(request):
 
 @csrf_exempt
 def show_post(request, post_id):
-    post = BlogPost.objects.get(pk=post_id)
+    post = Blog.objects.get(pk=post_id)
     return HttpResponse(simplejson.dumps({'body': post.body,
                                           'title': post.title}, ensure_ascii=False))
 
@@ -102,7 +96,7 @@ def show_post(request, post_id):
 @csrf_exempt
 def save_post(request, post_id):
     print('savePost')
-    post = BlogPost.objects.get(pk=post_id)
+    post = Blog.objects.get(pk=post_id)
     print(post.title,post.body)
     if request.is_ajax():
         post.title = request.POST.get('title')

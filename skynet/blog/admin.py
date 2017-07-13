@@ -5,9 +5,10 @@ from django.contrib.auth.admin import UserAdmin
 class BlogUserAdmin(UserAdmin):
     pass
 
-class BlogPostAdmin(admin.ModelAdmin):
+class BlogAdmin(admin.ModelAdmin):
     list_display = ('title', 'create_time')
 
-admin.site.register(models.BlogPost, BlogPostAdmin)
+admin.site.register(models.Post, BlogAdmin)
 admin.site.register(models.Category)
+admin.site.register(models.BlogComment)
 admin.site.register(models.User,BlogUserAdmin)

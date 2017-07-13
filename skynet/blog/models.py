@@ -2,15 +2,23 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-class BlogPost(models.Model):
+class Blog(models.Model):
+    POST_STATUS = (
+        ('P', '已发布'),
+        ('D', '已删除'),
+        ('E', '正在编辑'),
+    )
+
     title = models.CharField('标题',max_length=150)
     body = models.TextField('正文')
     create_time = models.DateTimeField('创建时间',auto_now_add=True)
-    status = models.CharField('文章状态',max_length=1,)
+    modify_time = models.DateTimeField('最后一次修改',auto_now=True)
+    status = models.CharField('文章状态',max_length=1, choices=POST_STATUS)
     views = models.PositiveIntegerField('浏览量', default=0)
     likes = models.PositiveIntegerField('喜欢', default=0)
     praises = models.PositiveIntegerField('点赞', default=0)
-    category = models.ForeignKey('Category',verbose_name='分类',null=True,on_delete=models.SET_NULL)
+    category = models.ManyToManyField('Category',blank=True)
+    user = models.ForeignKey('User',verbose_name='作者')
 
     def __str__(self):
         return self.title
@@ -20,15 +28,19 @@ class BlogPost(models.Model):
 
 class Category(models.Model):
     names = models.CharField('类型名称',max_length=20)
-    create_time = models.DateTimeField('创建s时间',auto_now_add=True)
+    desc = models.TextField('分类描述',blank=True, null=True)
 
     def __str__(self):
         return self.names
 
-
 class BlogComment(models.Model):
-    username = models.CharField('评论者姓名',max_length=100)
-    email = models.EmailField
+    user = models.ForeignKey('User', verbose_name='用户')
+    post = models.ForeignKey('BlogPost', verbose_name='文章')
+    comment = models.TextField('评论内容',blank=True, null=True)
+    comment_time = models.DateTimeField('评论时间',auto_now_add=True)
+
+    class Meta:
+        ordering = ('-comment_time',)
 
 class User(AbstractUser):
     pass

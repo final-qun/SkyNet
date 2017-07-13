@@ -6,14 +6,18 @@
     {% load custom_markdown %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/detail.css' %}"/>
-
-    <div class="content">
-        <span class="title">{{ post.title }} </span>
-        <div>
-            <span>喜欢:</span>{{ post.likes }}
-            <span>点赞:</span>{{ post.praises }}
-            <span>浏览量:</span>{{ post.views }}
+    <div class="ui main text container">
+        <h2 class="ui header">
+            {{ post.title }}
+        </h2>
+        <div class="extra">
+            <i class="empty heart icon"></i>
+            {{ post.likes }}
+            <i class="thumbs outline up icon"></i>
+            {{ post.praises }}
+            <i class="unhide icon"></i>
+            {{ post.views }}
+            <p class="ui content">{{ post.body |custom_markdown }}</p>
         </div>
-        <p class="body">{{ post.body |custom_markdown }}</p>
     </div>
 {% endblock %}

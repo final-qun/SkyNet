@@ -3,10 +3,36 @@
     SkyNet注册
 {% endblock %}
 {% block content %}
-    <h2>用户注册</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ rf.as_p }}
-        <input type="submit" value="提交">
-    </form>
+        {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/css/login.css' %}" type="text/css">
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h2 class="ui header">
+                用户注册
+            </h2>
+            <form class="ui large form">
+                <div class="ui stacked segment">
+                    <div class="field">
+                        <div class="ui input">
+                            <input type="text" placeholder="昵称" name="name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui input">
+                            <input type="password" placeholder="密码" name="pwd">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui input">
+                            <input type="password" placeholder="再次输入密码" name="pwd2">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui error message"></div>
+            </form>
+            <div class="ui message">
+                <a href="#">提交</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

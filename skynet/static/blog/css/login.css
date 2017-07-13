@@ -1,0 +1,10 @@
+body> .grid {
+    height: 100%;
+}
+.ui.grid {
+    padding-top: 7em;
+}
+
+.column {
+    max-width: 450px;
+}
