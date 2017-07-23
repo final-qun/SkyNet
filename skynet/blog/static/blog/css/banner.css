@@ -1,0 +1,13 @@
+body {
+    padding-top: 7em;
+}
+.labeled.item {
+    color: #0d71bb;
+}
+.ui.fixed.menu {
+    background: #fff;
+    border-bottom: 1px solid #aaa;
+}
+#login #logined {
+    display: none;
+}

@@ -17,7 +17,7 @@ class IndexView(ListView):
 
 
 class UIndexView(ListView):
-    template_name = "blog/index.html"
+    template_name = "blog/user/uindex.html"
     page_kwarg = "user_id"
 
     def get_queryset(self):
@@ -32,16 +32,16 @@ class UIndexView(ListView):
         return context
 
 
-class PostDetailView(DetailView):
+class BlogDetailView(DetailView):
     model = Blog
     template_name = 'blog/detail.html'
-    pk_url_kwarg = 'post_id'
-    context_object_name = 'post'
+    pk_url_kwarg = 'blog_id'
+    context_object_name = 'blog'
 
 
-class EditPostView(DetailView):
+class EditBlogView(DetailView):
     model = Blog
-    template_name = 'blog/edit.html'
+    template_name = 'blog/user/edit.html'
     pk_url_kwarg = 'blog_id'
     context_object_name = 'blog'
 
@@ -106,6 +106,11 @@ def save_blog(request, blog_id):
     print(blog.title,blog.body)
     blog.save()
     return HttpResponse()
+
+def delete_blog(request, blog_id):
+    blog = Blog.objects.get(pk=blog_id)
+    blog.delete()
+    return HttpResponseRedirect("/blog/u/"+str(request.user.pk));
 
 
 def logout(request):

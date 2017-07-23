@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    文章目录
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/css/edit.css' %}" type="text/css">
+    <script type="text/javascript" src="{% static 'blog/js/edit.js' %}"></script>
+    <i id="blog-id" data-index="{{ blog.pk }}" hidden></i>
+    <div id="back-index">
+        <a href="{% url 'blog:uindex' request.user.pk %} " class="ui primary button">返回主页</a>
+    </div>
+    <div class="ui center aligned grid">
+        <div class="column">
+            <div class="ui menu">
+                <a class="item">菜单</a>
+                <a class="item">标签</a>
+                <div class="right menu">
+                    <a id="save_blog" class="ui item">保存</a>
+                    <a class="ui item">发布</a>
+                </div>
+            </div>
+            <form class="ui large form">
+                <div class="ui stacked segment">
+
+                    <div class="field">
+                        <div class="ui input">
+                            <input id="title" type="text" placeholder="标题" name="title" value="{{ blog.title }}">
+                        </div>
+                    </div>
+                    <div class="field">
+
+                    </div>
+                    <div class="field">
+                        <div class="ui input">
+                            <textarea id="body" name="body" rows="15">{{ blog.body }}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

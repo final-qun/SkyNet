@@ -1,5 +1,10 @@
-.content {
-    border-bottom: 1px solid #aaa;
+#author-name {
+    font-size: 20px;
+}
+#create-time {
+    margin-left: 15px;
+    font-size: 14px;
+    color: #999;
 }
 
 

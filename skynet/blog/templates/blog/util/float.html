@@ -1,0 +1,20 @@
+{% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'blog/css/util/float.css' %}">
+<script type="text/javascript" src="{% static 'blog/js/util/float.js' %}"></script>
+<div class="ui vertical icon menu">
+    <a class="page-scroll item" data-content="回到顶部" data-position="left center" href="#top">
+        <i class="angle up icon"></i>
+    </a>
+    <a class="item" data-content="编辑文章" data-position="left center" href="{% url 'blog:edit' blog.pk %}">
+        <i class="edit icon"></i>
+    </a>
+    <a class="item" data-content="分享文章" data-position="left center">
+        <i class="share icon"></i>
+    </a>
+    <a class="page-scroll item" data-content="文章评论" data-position="left center" href="#comments">
+        <i class="comment icon"></i>
+    </a>
+    <a class="item" data-content="喜欢" data-position="left center">
+        <i class="heart icon"></i>
+    </a>
+</div>

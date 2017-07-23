@@ -1,33 +1,29 @@
 {% extends 'blog/base.html' %}
 {% block title %}
-    文章目录
+    {{ request.user.username }}的主页
 {% endblock %}
 {% block content %}
     {% load custom_markdown %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'blog/css/index.css' %}" type="text/css">
-    <div class="ui main text container">
+    <link rel="stylesheet" href="{% static 'blog/css/uindex.css' %}" type="text/css">
+    <div class="ui main text container fluid">
         <div class="ui items">
             {% for blog in blogs %}
                 <div class="ui item">
                     <div class="content">
                         <div class="column">
-                            <div class="author">
-                                <a id="author-name" href="">{{ blog.user.username }}</a>
-                                <span id="create-time"class="meta">{{ blog.create_time | date:'y.m.d H:i' }}</span>
+                            <a class="ui header" href="{% url 'blog:detail' blog.pk %}">{{ blog.title }}</a>
+                            <span>{{ blog.create_time | date:'m.d H:i' }}</span>
+                            <div class="right floated">
+                                <a href="{% url 'blog:edit' blog.pk %}"><i class="edit icon"></i></a>
+                                <a href="{% url 'blog:delete' blog.pk %}"><i class="trash icon"></i></a>
                             </div>
                         </div>
-                        <div class="header">
-                            <a href="{% url 'blog:detail' blog.pk %}">{{ blog.title }}</a>
-                        </div>
-
                         <div class="description">
                             <p>{{ blog.body | custom_markdown | truncatechars_html:150 }}</p>
                         </div>
                         <div class="extra">
-                            <div class="extra">
-                                {% include 'blog/util/tab.html' %}
-                            </div>
+                            {% include 'blog/util/tab.html' %}
                         </div>
                         <div class="ui divider"></div>
                     </div>

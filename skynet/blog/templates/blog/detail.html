@@ -1,23 +1,20 @@
 {% extends 'blog/base.html' %}
 {% block title %}
-    {{ post.title }}
+    {{ blog.title }}
 {% endblock %}
 {% block content %}
     {% load custom_markdown %}
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/detail.css' %}"/>
-    <div class="ui main text container">
-        <h2 class="ui header">
-            {{ post.title }}
+    <div id="top" class="ui main text container">
+        <h2  class="ui header">
+            {{ blog.title }}
         </h2>
         <div class="extra">
-            <i class="empty heart icon"></i>
-            {{ post.likes }}
-            <i class="thumbs outline up icon"></i>
-            {{ post.praises }}
-            <i class="unhide icon"></i>
-            {{ post.views }}
-            <p class="ui content">{{ post.body |custom_markdown }}</p>
+            {% include 'blog/util/tab.html' %}
         </div>
+        <p class="ui content">{{ blog.body |custom_markdown }}</p>
+        {% include 'blog/util/comments.html' %}
     </div>
+    {% include 'blog/util/float.html' %}
+
 {% endblock %}

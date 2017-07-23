@@ -6,14 +6,14 @@
         {% block title %}{% endblock %}
     </title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/semantic.min.css' %}">
-    <script type="text/javascript" src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'blog/js/semantic.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/lib/semantic.min.css' %}">
+    <script type="text/javascript" src="{% static 'blog/js/lib/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'blog/js/lib/semantic.min.js' %}"></script>
 </head>
 <body>
 {% block header %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'blog/css/base/banner.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'blog/css/banner.css' %}" type="text/css">
     <script type="text/javascript" src="{% static 'blog/js/base.js' %}"></script>
     <div class="ui secondary fixed menu">
         <a class="ui header labeled item" href="{% url 'blog:index' %}">SkyNet</a>
