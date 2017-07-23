@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    文章目录
+{% endblock %}
+{% block content %}
+    {% load custom_markdown %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/css/index.css' %}" type="text/css">
+    <div class="ui main text container">
+        <div class="ui items">
+            {% for blog in blogs %}
+                <div class="ui item">
+                    <div class="content">
+                        <div>
+                            <div class="author">
+                                {{ blog.user.username }}
+                            </div>
+                            <div class="meta">
+                                {{ post.create_time }}
+                            </div>
+                        </div>
+                        <div class="header">
+                            <a href="{% url 'blog:detail' blog.pk %}">{{ blog.title }}</a>
+                        </div>
+
+                        <div class="description">
+                            <p>{{ blog.body | custom_markdown | truncatechars_html:150 }}</p>
+                        </div>
+                        <div class="extra">
+                            <div class="ui labeled button" tabindex="0">
+                                <div class="ui basic button">
+                                    <i class="heart icon"></i>
+                                    Like
+                                </div>
+                                <a class="ui basic label">
+                                    {{ blog.likes }}
+                                </a>
+                            </div>
+                            <div class="ui labeled button" tabindex="0">
+                                <div class="ui basic button">
+                                    <i class="thumbs outline up icon"></i>
+                                    点赞
+                                </div>
+                                <a class="ui basic label">
+                                    {{ blog.praises }}
+                                </a>
+                            </div>
+                            <div class="ui labeled button" tabindex="0">
+                                <div class="ui basic button">
+                                    <i class="unhide icon"></i>
+                                    查看
+                                </div>
+                                <a class="ui basic label">
+                                    {{ blog.views }}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ui divider"></div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

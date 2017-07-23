@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    SkyNet登录
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/css/form.css' %}" type="text/css">
+    <script type="text/javascript" src="{% static 'blog/js/login.js' %}"></script>
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <div class="ui stacked segment">
+                <div class="ui two item menu">
+                    <a class="item {% if islogin %} active {% endif %}" href="{% url 'blog:login' %}">登录</a>
+                    <a class="item {% if not islogin %} active {% endif %}" href="{% url 'blog:register' %}">注册</a>
+                </div>
+                {% if islogin %}
+                    <div id="login-div">
+                        <form class="ui login form segment" method="post">
+
+                            <div class="field">
+                                <div class="ui input">
+                                    <input type="text" placeholder="邮箱或昵称" name="name">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui input">
+                                    <input type="password" placeholder="密码" name="pwd">
+                                </div>
+                            </div>
+                            <div class="ui fluid large teal submit button">登录</div>
+                        </form>
+                        </div>
+                    {% else %}
+                        <div id="register-div">
+                            <form class="ui register form segment" method="post">
+                                <div class="field">
+                                    <div class="ui input">
+                                        <input type="text" placeholder="昵称" name="name">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui input">
+                                        <input type="text" placeholder="邮箱" name="email">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui input">
+                                        <input type="password" placeholder="密码" name="pwd">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui input">
+                                        <input type="password" placeholder="再次输入密码" name="pwd2">
+                                    </div>
+                                </div>
+
+                                <div class="ui fluid large teal submit button">提交</div>
+                            </form>
+                        </div>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

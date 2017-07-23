@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/semantic.min.css' %}">
+    <script type="text/javascript" src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'blog/js/semantic.min.js' %}"></script>
+</head>
+<body>
+{% block header %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/css/base/banner.css' %}" type="text/css">
+    <script type="text/javascript" src="{% static 'blog/js/base.js' %}"></script>
+    <div class="ui secondary fixed menu">
+        <a class="ui header labeled item" href="{% url 'blog:index' %}">SkyNet</a>
+        <div class="item">
+            <div class="ui basic buttons">
+                <button class="ui basic button">发现</button>
+                <button class="ui basic button">关注</button>
+                <button class="ui basic button">消息</button>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ui icon input">
+                <input type="text" placeholder="搜索...">
+                <div class="ui blue submit button">搜索</div>
+            </div>
+        </div>
+        <div class="right menu">
+            {% if request.user.is_authenticated %}
+                <div class="ui dropdown item">
+                    <span class="text">{{ request.user.username }}</span>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="{% url 'blog:uindex' request.user.pk %}">我的主页</a>
+                        <a class="item" href="#">个人设置</a>
+                        <a class="item" href="{% url 'blog:logout' %}">登出</a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="item">
+                    <div class="ui buttons">
+                        <a class="ui positive button" href="{% url 'blog:login' %}">
+                            登录
+                        </a>
+                        <div class="or"></div>
+                        <a class="ui primary button" href="{% url 'blog:register' %}">
+                            注册
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="item">
+                <button id="create_blog" class="ui primary button">写文章</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+{% endblock %}
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+body> .grid {
+    height: 100%;
+}
+.ui.grid {
+    padding-top: 1em;
+}
+
+.vertical.menu {
+    width: 50px;
+}
+
+.column {
+    max-width: 75%
+}
+#back-index {
+    position: fixed;
+    left: 3%;
+    top: 1em;
+}
+.ui.input textarea {
+    line-height: 2;
+    font-size: 15px;
+    padding: 25px 25px 0;
+}
+.ui.message {
+    position: fixed;
+}
