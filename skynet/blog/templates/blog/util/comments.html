@@ -1,29 +1,30 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'blog/css/util/comments.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/util/comments.css' %}"/>
 <div class="ui divider"></div>
 <div id="comments" class="comments">
     <form class="ui reply form">
         <div class="fixed">
-            <textarea></textarea>
+            <textarea placeholder="请添加您的评论"></textarea>
         </div>
         <div class="ui blue labeled submit icon button">
             <i class="icon edit"></i> 添加评论
         </div>
     </form>
+    {% if comments.length > 0 %}
+        <h3 class="ui dividing header">用户评论</h3>
+        {% for comment in comments %}
+            <div class="comment">
+                <a class="avatar">
+                    <img src="{{ comment.user.avatar }}">
+                </a>
+                <div class="text">
 
-    <h3 class="ui dividing header">用户评论</h3>
-{#    {% for comment in comments %}#}
-{#        <div class="comment">#}
-{#            <a class="avatar">#}
-{#                <img src="{{ comment.user.avatar }}">#}
-{#            </a>#}
-{#            <div class="text">#}
-{##}
-{#            </div>#}
-{#            <div class="reply">#}
-{#                <a class="reply">回复</a>#}
-{#            </div>#}
-{#        </div>#}
-{##}
-{#    {% endfor %}#}
+                </div>
+                <div class="reply">
+                    <a class="reply">回复</a>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
 </div>

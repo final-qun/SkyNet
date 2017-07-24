@@ -1,6 +1,6 @@
 {% extends 'blog/base.html' %}
 {% block title %}
-    文章目录
+    文章编辑
 {% endblock %}
 {% block header %}
 {% endblock %}
@@ -12,14 +12,17 @@
     <div id="back-index">
         <a href="{% url 'blog:uindex' request.user.pk %} " class="ui primary button">返回主页</a>
     </div>
+
+    {% include 'blog/util/bloglist.html' %}
     <div class="ui center aligned grid">
         <div class="column">
             <div class="ui menu">
-                <a class="item">菜单</a>
-                <a class="item">标签</a>
+                <a id="blog_list" class="item">文章列表</a>
+{#                <a class="item">菜单</a>#}
+{#                <a class="item">标签</a>#}
                 <div class="right menu">
                     <a id="save_blog" class="ui item">保存</a>
-                    <a class="ui item">发布</a>
+                    <a id="pub_blog" class="ui item">发布</a>
                 </div>
             </div>
             <form class="ui large form">

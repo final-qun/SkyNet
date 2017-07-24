@@ -6,6 +6,7 @@
     {% load custom_markdown %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'blog/css/uindex.css' %}" type="text/css">
+    <script type="text/javascript" src="{% static 'blog/js/uindex.js' %}"></script>
     <div class="ui main text container fluid">
         <div class="ui items">
             {% for blog in blogs %}
@@ -16,7 +17,7 @@
                             <span>{{ blog.create_time | date:'m.d H:i' }}</span>
                             <div class="right floated">
                                 <a href="{% url 'blog:edit' blog.pk %}"><i class="edit icon"></i></a>
-                                <a href="{% url 'blog:delete' blog.pk %}"><i class="trash icon"></i></a>
+                                <a id="delete_blog" data-index="{{ blog.pk }}"><i class="trash icon"></i></a>
                             </div>
                         </div>
                         <div class="description">
@@ -29,6 +30,17 @@
                     </div>
                 </div>
             {% endfor %}
+        </div>
+    </div>
+    <div class="ui basic modal">
+        <p class="text center">您确定要删除吗？</p>
+        <div class="actions">
+            <div class="ui cancel primary button">
+                我再想想
+            </div>
+            <div class="ui approve red button">
+                <a id="confirm">是，我要删除</a>
+            </div>
         </div>
     </div>
 {% endblock %}

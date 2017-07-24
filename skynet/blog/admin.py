@@ -2,8 +2,10 @@ from django.contrib import admin
 from blog import models
 from django.contrib.auth.admin import UserAdmin
 
+
 class BlogUserAdmin(UserAdmin):
     pass
+
 
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('title', 'create_time')
