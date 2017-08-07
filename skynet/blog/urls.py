@@ -8,7 +8,6 @@ urlpatterns = [
     url(r'^register/', csrf_exempt(register), name='register'),
     url(r'^edit/(?P<blog_id>\d+)', EditBlogView.as_view(), name='edit'),
     url(r'^create_blog', create_blog, name='create'),
-    url(r'^show_blog/(?P<blog_id>\d+)', csrf_exempt(show_blog), name='show'),
     url(r'^save_blog/(?P<blog_id>\d+)', save_blog, name='save'),
     url(r'^pub_blog/(?P<blog_id>\d+)', pub_blog,name="publish"),
     url(r'^delete/(?P<blog_id>\d+)', delete_blog, name='delete'),

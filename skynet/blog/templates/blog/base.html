@@ -7,8 +7,10 @@
     </title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/lib/semantic.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/lib/prettify.min.css' %}"/>
     <script type="text/javascript" src="{% static 'blog/js/lib/jquery-3.2.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'blog/js/lib/semantic.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'blog/js/lib/prettify.min.js' %}"></script>
 </head>
 <body>
 {% block header %}
@@ -37,35 +39,29 @@
                     <i class="dropdown icon"></i>
                     <div class="menu">
                         <a class="item" href="{% url 'blog:uindex' request.user.pk %}">我的主页</a>
-                        <a class="item" href="#">个人设置</a>
+                        <a class="item">个人设置</a>
                         <a class="item" href="{% url 'blog:logout' %}">登出</a>
                     </div>
                 </div>
             {% else %}
-                <div class="item">
-                    <div class="ui buttons">
-                        <a class="ui positive button" href="{% url 'blog:login' %}">
-                            登录
-                        </a>
-                        <div class="or"></div>
-                        <a class="ui primary button" href="{% url 'blog:register' %}">
-                            注册
-                        </a>
-                    </div>
+                <div class="ui buttons">
+                    <a class="ui positive button" href="{% url 'blog:login' %}">
+                        登录
+                    </a>
+                    <div class="or"></div>
+                    <a class="ui primary button" href="{% url 'blog:register' %}">
+                        注册
+                    </a>
+                </div>
                 </div>
             {% endif %}
-            <div class="item">
-                <button id="create_blog" class="ui primary button">写文章</button>
-            </div>
+        <div class="item">
+            <button id="create_blog" class="ui primary button">写文章</button>
         </div>
+    </div>
     </div>
 {% endblock %}
 {% block content %}
 {% endblock %}
-<footer>
-    {% block footer %}
-    {% endblock %}
-</footer>
-
 </body>
 </html>

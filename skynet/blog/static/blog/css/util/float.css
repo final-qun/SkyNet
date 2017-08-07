@@ -1,5 +1,8 @@
 .ui.vertical.menu {
     position: fixed;
     bottom: 10%;
-    right: 3%;
+    right: 5%;
+}
+.ui.menu:last-child {
+    margin-bottom: 14px !important;
 }

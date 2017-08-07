@@ -109,12 +109,6 @@ def create_blog(request):
         return HttpResponse(simplejson.dumps({'error': 1}, ensure_ascii=False))
 
 
-@csrf_exempt
-def show_blog(request, post_id):
-    blog = Blog.objects.get(pk=post_id)
-    return HttpResponse(simplejson.dumps({'body': blog.body,
-                                          'title': blog.title}, ensure_ascii=False))
-
 
 @csrf_exempt
 def save_blog(request, blog_id):

@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'blog/css/util/bloglist.css' %}">
 <div id="left-menu" class="ui sidebar vertical menu">
     <div class="item">
-        <a>返回首页</a>
+        <a href="{% url 'blog:index' %}">返回首页</a>
     </div>
     {% for blog in blogs %}
         <div id="menu-item" class="item">

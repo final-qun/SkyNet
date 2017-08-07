@@ -37,7 +37,7 @@ class Category(models.Model):
 
 class BlogComment(models.Model):
     user = models.ForeignKey('User', verbose_name='用户')
-    post = models.ForeignKey('Blog', verbose_name='文章')
+    blog = models.ForeignKey('Blog', verbose_name='文章')
     comment = models.TextField('评论内容',blank=True, null=True)
     comment_time = models.DateTimeField('评论时间',auto_now_add=True)
 
@@ -46,6 +46,6 @@ class BlogComment(models.Model):
 
 
 class User(AbstractUser):
-    # icon = models.ImageField('用户头像');
+    icon = models.ImageField('用户头像',blank=True);
     desc=models.TextField('用户描述',blank=True, null=True);
     pass
